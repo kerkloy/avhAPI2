@@ -29,8 +29,8 @@ RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cac
 # Install PHP dependencies
 RUN composer install --optimize-autoloader --no-dev
 
-# Expose port 9000
-EXPOSE 9000
+# Expose the port Laravel will run on
+EXPOSE 8000
 
-# Start the PHP-FPM server
-CMD ["php-fpm"]
+# Start the Laravel server
+CMD php artisan serve --host=0.0.0.0 --port=8000
